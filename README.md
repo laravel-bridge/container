@@ -8,8 +8,38 @@
 
 The PSR-11 container bridges.
 
-* [ ] Namespace in [`composer.json`](/composer.json) and files in [`src`](/src) or [`tests`](/tests) directories
-* [ ] Project name and description and author name in [`composer.json`](/composer.json)
-* [ ] Travis CI setting in [`.travis.yml`](/.travis.yml)
-* [ ] The badges links and this checklist in [README.md](/README.md) file
-* [ ] Author in [LICENSE](/LICENSE) file
+## Pimple bridge to others
+
+Build the wrapper.
+
+```php
+// Laravel Container
+$actualContainer = new \Illuminate\Container\Container();
+$actualContainer->instance('foo', 'foo');
+
+$wrapper = new \LaravelBridge\Container\Pimple\ContainerWrapper();
+$wrapper->setContainer($actualContainer);
+
+// Use like the Pimple Container, but it will register on Laravel Container
+$wrapper['bar'] = function($c) {
+    return 'bar' . $c->get('foo');
+};
+
+$wrapper->get('bar'); // 'barfoo'
+$actualContainer->make('bar'); // 'barfoo'
+```
+
+Use ServiceProvider bridge
+
+```php
+// Laravel Container
+$actualContainer = new \Illuminate\Container\Container();
+
+$bridge = new \LaravelBridge\Container\Pimple\ServiceProviderBridge($actualContainer);
+
+$bridge->register(new YourPimpleServiceProvider());
+```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
