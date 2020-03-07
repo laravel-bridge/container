@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests;
+namespace Tests\Unit;
 
-use MilesChou\Template\Sample;
+use LaravelBridge\Container\Sample;
 use PHPUnit\Framework\TestCase;
 
 class SampleTest extends TestCase

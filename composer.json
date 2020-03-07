@@ -1,10 +1,10 @@
 {
-    "name": "mileschou/composer-template",
-    "description": "The template for create Composer project",
+    "name": "laravel-bridge/container",
+    "description": "The PSR-11 container bridges",
     "type": "library",
     "license": "MIT",
     "keywords": [
-        "template"
+        "container", "psr11"
     ],
     "authors": [
         {
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MilesChou\\Template\\": "src"
+            "LaravelBridge\\Container\\": "src/Container"
         }
     },
     "autoload-dev": {
