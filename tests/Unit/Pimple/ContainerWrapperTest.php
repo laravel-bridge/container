@@ -17,9 +17,9 @@ class ContainerWrapperTest extends TestCase
     public function shouldRegisterOnLaravelContainerUsingContainerWrapper(): void
     {
         $actual = new LaravelContainer();
-        $actual['foo'] = 'foo';
+        $actual->instance('foo', 'foo');
 
-        $target = new ContainerWrapper();
+        $target = new ContainerWrapper($actual);
         $target->setContainer($actual);
 
         $target['bar'] = function ($c) {

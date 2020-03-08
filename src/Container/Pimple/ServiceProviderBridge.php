@@ -13,19 +13,23 @@ class ServiceProviderBridge
     use ContainerAwareTrait;
 
     /**
+     * @var ContainerWrapper
+     */
+    private $wrapper;
+
+    /**
      * @param ContainerInterface $container
      */
     public function __construct($container)
     {
         $this->container = $container;
+
+        $this->wrapper = new ContainerWrapper($this->container);
     }
 
     public function register(ServiceProviderInterface $provider): ServiceProviderBridge
     {
-        $wrapper = new ContainerWrapper();
-        $wrapper->setContainer($this->container);
-
-        $provider->register($wrapper);
+        $provider->register($this->wrapper);
 
         return $this;
     }

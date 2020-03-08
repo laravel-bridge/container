@@ -9,10 +9,22 @@ use DI\Container as PHPDIContainer;
 use LaravelBridge\Container\NotFoundException;
 use LaravelBridge\Container\Traits\ContainerWrapperTrait;
 use Pimple\Container as PimpleContainer;
+use Psr\Container\ContainerInterface;
 
 class ContainerWrapper extends PimpleContainer
 {
     use ContainerWrapperTrait;
+
+    /**
+     * @param ContainerInterface $container
+     * @param array $values
+     */
+    public function __construct(ContainerInterface $container, array $values = [])
+    {
+        $this->setContainer($container);
+
+        parent::__construct($values);
+    }
 
     /**
      * @param string $id
