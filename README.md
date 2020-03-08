@@ -8,7 +8,7 @@
 
 The PSR-11 container bridges.
 
-## Pimple bridge to others
+## Pimple container interface bridge to others
 
 Build the wrapper.
 
