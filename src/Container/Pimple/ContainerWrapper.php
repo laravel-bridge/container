@@ -6,18 +6,18 @@ namespace LaravelBridge\Container\Pimple;
 
 use ArrayAccess;
 use DI\Container as PHPDIContainer;
-use LaravelBridge\Container\NotFoundException;
+use LaravelBridge\Container\AccessDeniedException;
 use LaravelBridge\Container\Traits\ContainerWrapperTrait;
 use Pimple\Container as PimpleContainer;
 use Psr\Container\ContainerInterface;
 
-class ContainerWrapper extends PimpleContainer
+class ContainerWrapper extends PimpleContainer implements ContainerInterface
 {
     use ContainerWrapperTrait;
 
     /**
      * @param ContainerInterface $container
-     * @param array $values
+     * @param array<mixed> $values
      */
     public function __construct(ContainerInterface $container, array $values = [])
     {
@@ -30,7 +30,7 @@ class ContainerWrapper extends PimpleContainer
      * @param string $id
      * @param mixed $value
      */
-    public function offsetSet($id, $value)
+    public function offsetSet($id, $value): void
     {
         if ($this->container instanceof ArrayAccess) {
             $this->container->offsetSet($id, $value);
@@ -42,7 +42,7 @@ class ContainerWrapper extends PimpleContainer
             return;
         }
 
-        $this->throwException();
+        $this->throwException(__METHOD__);
     }
 
     /**
@@ -60,9 +60,10 @@ class ContainerWrapper extends PimpleContainer
     }
 
     /**
+     * @param string $id
      * @return bool
      */
-    public function offsetExists($id)
+    public function offsetExists($id): bool
     {
         if ($this->container instanceof ArrayAccess) {
             return $this->container->offsetExists($id);
@@ -75,20 +76,23 @@ class ContainerWrapper extends PimpleContainer
     /**
      * @param string $id
      */
-    public function offsetUnset($id)
+    public function offsetUnset($id): void
     {
         if ($this->container instanceof ArrayAccess) {
             $this->container->offsetUnset($id);
             return;
         }
 
-        $this->throwException();
+        $this->throwException(__METHOD__);
     }
 
-    private function throwException()
+    /**
+     * @param string $method
+     */
+    private function throwException(string $method): void
     {
         $class = get_class($this->container);
 
-        throw new NotFoundException("Cannot access {$class} via ContainerWrapper");
+        throw new AccessDeniedException("Cannot access {$class} via ContainerWrapper::{$method}");
     }
 }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace LaravelBridge\Container\Pimple;
 
-use LaravelBridge\Container\Traits\ContainerAwareTrait;
+use LaravelBridge\Container\Traits\PsrContainerAwareTrait;
 use Pimple\ServiceProviderInterface;
 use Psr\Container\ContainerInterface;
 
 class ServiceProviderBridge
 {
-    use ContainerAwareTrait;
+    use PsrContainerAwareTrait;
 
     /**
      * @var ContainerWrapper

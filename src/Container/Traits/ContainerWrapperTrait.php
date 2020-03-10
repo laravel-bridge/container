@@ -6,7 +6,7 @@ namespace LaravelBridge\Container\Traits;
 
 trait ContainerWrapperTrait
 {
-    use ContainerAwareTrait;
+    use PsrContainerAwareTrait;
 
     /**
      * @param mixed $id
