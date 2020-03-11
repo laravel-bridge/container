@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.com/laravel-bridge/support.svg?branch=master)](https://travis-ci.com/laravel-bridge/container)
 [![codecov](https://codecov.io/gh/laravel-bridge/support/branch/master/graph/badge.svg)](https://codecov.io/gh/laravel-bridge/container)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/78bd52cc844443d5bf8ea1faf0967af4)](https://www.codacy.com/gh/laravel-bridge/container)
 [![Latest Stable Version](https://poser.pugx.org/MilesChou/parkdown/v/stable)](https://packagist.org/packages/laravel-bridge/container)
 [![Total Downloads](https://poser.pugx.org/MilesChou/parkdown/d/total.svg)](https://packagist.org/packages/laravel-bridge/container)
 [![License](https://poser.pugx.org/MilesChou/parkdown/license)](https://packagist.org/packages/laravel-bridge/container)
