@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelBridge\Container\Pimple\Transformers;
 
 use Illuminate\Container\Container;
