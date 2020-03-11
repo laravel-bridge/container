@@ -4,7 +4,6 @@ namespace Tests\Unit\Pimple;
 
 use DI\Container as PHPDIContainer;
 use Illuminate\Container\Container as LaravelContainer;
-use LaravelBridge\Container\Pimple\ContainerWrapper;
 use LaravelBridge\Container\Pimple\ServiceProviderBridge;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Pimple\Fixture\TestServiceProvider;
